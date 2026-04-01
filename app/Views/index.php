@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <?= $row->vyrobce ?>
+                    <?= anchor('vyrobce/'.$row->idVyrobce, $row->vyrobce); ?>
                 </h5>
             </div>
         </div>

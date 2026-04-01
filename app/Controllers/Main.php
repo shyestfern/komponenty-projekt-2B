@@ -30,4 +30,9 @@ class Main extends BaseController
     {
         echo view('index', $this->data);
     }
+
+    public function vyrobce()
+    {
+        echo view('vyrobce', $this->data);
+    }
 }
