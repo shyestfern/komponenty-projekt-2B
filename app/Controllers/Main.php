@@ -12,14 +12,15 @@ use App\Models\Vyrobce;
 
 class Main extends BaseController
 {
+    public $vyrobce;
     public $data;
 
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         parent::initController($request, $response, $logger);
 
-        $vyrobce = new Vyrobce();
-        $dataVyrobce = $vyrobce->findAll();
+        $this->vyrobce = new Vyrobce();
+        $dataVyrobce = $this->vyrobce->findAll();
 
         $this->data = [
           "vyrobce" => $dataVyrobce  
@@ -31,8 +32,17 @@ class Main extends BaseController
         echo view('index', $this->data);
     }
 
-    public function vyrobce()
+    public function vyrobce($id)
     {
+        $dataKomponent = $this->vyrobce->join('komponent', 'vyrobce.idVyrobce = komponent.vyrobce_id', 'inner')
+            ->join('typkomponent', 'komponent.typKomponent_id = typkomponent.idKomponent', 'inner')
+            ->where('vyrobce.idVyrobce', $id)
+            ->findAll();
+        
+        $this->data += [
+            "komponent" => $dataKomponent
+        ];
+
         echo view('vyrobce', $this->data);
     }
 }
