@@ -45,4 +45,9 @@ class Main extends BaseController
 
         echo view('vyrobce', $this->data);
     }
+    
+    public function komponent($id)
+    {
+        echo view('komponent', $this->data);
+    }
 }

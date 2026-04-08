@@ -9,7 +9,7 @@
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title">
-                    <?= anchor('', $row->nazev); ?>
+                    <?= anchor('komponent/'.$row->id, $row->nazev); ?>
                 </h5>
                 <p>
                     <?= $row->typKomponent; ?>
