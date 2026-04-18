@@ -2,6 +2,10 @@
 
 <?= $this->section("content"); ?>
 
+<h1 class="text-center m-4">
+    <?= $nazevVyrobce." komponenty" ?>
+</h1>
+
 <div class="row">
     <?php foreach($komponent as $row): ?>
 
